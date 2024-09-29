@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Prompt the user for the filename
 read -p "Enter the name for the patch file (without extension): " inputtedText
 
