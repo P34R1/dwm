@@ -13,13 +13,19 @@ static const char col_black[]       = "#282828";
 static const char col_white[]       = "#ebdbb2";
 static const char col_bg2[]         = "#504945";
 static const char col_purple[]      = "#b16286";
+static const char col_red[] = "#FF0000";
 
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_black,  col_bg2 },
-	[SchemeSel]  = { col_white, col_purple, col_purple },
+	/*                    fg         bg         border   */
+	/*[SchemeNorm]      = { col_white, col_black,  col_bg2 },*/
+	/*[SchemeSel]       = { col_white, col_purple, col_purple },*/
+	[SchemeTagsNorm]  = { col_white, col_bg2,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]   = { col_white, col_purple,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_white, col_red,  col_bg2 }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]   = { col_white, col_red,  col_purple}, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeStatus]    = { col_white, col_black,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
@@ -119,4 +125,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
