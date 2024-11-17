@@ -26,9 +26,12 @@ static const char *colors[][3]      = {
 	[SchemeStatus]    = { col_white, col_black,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 };
 static const unsigned int alphas[][3]      = {
-  /*                   fg      bg        border      */
-  [SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha },
-  [SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha },
+	/*                   fg      bg        border      */
+	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeStatus] = { OPAQUE, baralpha, borderalpha },
 };
 
 static const char *const autostart[] = {
