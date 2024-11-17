@@ -36,7 +36,7 @@ static const char *const autostart[] = {
 	"librewolf", NULL,
 	"flatpak", "run", "dev.vencord.Vesktop", NULL,
 
-  "hsetroot", "-center", "/home/pearl/Pictures/backgrounds/bg-10.png", NULL,
+  "hsetroot", "-cover", "/home/pearl/Pictures/backgrounds/bg-10.png", NULL,
   "dunst", NULL,
   "picom", NULL,
   "udiskie", NULL,
@@ -57,7 +57,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5;  /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
