@@ -32,7 +32,14 @@ static const unsigned int alphas[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"st", NULL,
+	"alacritty", NULL,
+	"librewolf", NULL,
+	"flatpak", "run", "dev.vencord.Vesktop", NULL,
+
+  "hsetroot", "-center", "~/Pictures/backgrounds/bg-10.png", NULL,
+  "dunst", NULL,
+  "picom", NULL,
+  "udiskie", NULL,
 	NULL /* terminate */
 };
 
