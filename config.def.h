@@ -15,7 +15,7 @@ static const char col_white[]       = "#ebdbb2";
 static const char col_bg2[]         = "#504945";
 static const char col_purple[]      = "#b16286";
 
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0xe0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*                    fg         bg          border        */
@@ -27,11 +27,11 @@ static const char *colors[][3]      = {
 };
 static const unsigned int alphas[][3]      = {
 	/*                   fg      bg        border      */
-	[SchemeTagsNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeTagsSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeTagsNorm] = { OPAQUE, OPAQUE,   borderalpha },
+	[SchemeTagsSel]  = { OPAQUE, OPAQUE,   borderalpha },
 	[SchemeInfoNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeInfoSel]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeStatus] = { OPAQUE, baralpha, borderalpha },
+	[SchemeStatus]   = { OPAQUE, 0xF5,     borderalpha },
 };
 
 static const char *const autostart[] = {
