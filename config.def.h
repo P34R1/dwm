@@ -39,6 +39,7 @@ static const char *const autostart[] = {
 	"librewolf", NULL,
 	"flatpak", "run", "dev.vencord.Vesktop", NULL,
 
+  "slstatus", NULL,
   "hsetroot", "-cover", "/home/pearl/Pictures/backgrounds/bg-10.png", NULL,
   "dunst", NULL,
   "picom", NULL,
