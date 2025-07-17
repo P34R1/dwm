@@ -1,58 +1,58 @@
 {
   description = "A Nix-flake-based C/C++ development environment";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    utils.url = "github:numtide/flake-utils";
+  };
 
   outputs =
-    { self, nixpkgs }:
-    let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-      forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs supportedSystems (
-          system:
-          f {
-            pkgs = import nixpkgs { inherit system; };
-          }
-        );
-    in
     {
-      devShells = forEachSupportedSystem (
-        { pkgs }:
-        {
-          default =
-            pkgs.mkShell.override
-              {
-                # Override stdenv in order to change compiler:
-                # stdenv = pkgs.clangStdenv;
-              }
-              {
-                packages =
-                  with pkgs;
-                  [
-                    clang-tools
-                    cmake
-                    codespell
-                    conan
-                    cppcheck
-                    doxygen
-                    gtest
-                    lcov
-                    vcpkg
-                    vcpkg-tool
+      self,
+      nixpkgs,
+      utils,
+    }:
+    utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        env = pkgs.clangStdenv;
 
-                    xorg.libX11
-                    xorg.libXft
-                    xorg.libXinerama
-                  ]
-                  ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
-              };
-        }
-      );
-    };
+        buildInputs = with pkgs.xorg; [
+          libX11
+          libXft
+          libXinerama
+        ];
+
+        src = ./.;
+        name = "dwm";
+        version = "6.5";
+      in
+      {
+        packages.default = env.mkDerivation {
+          inherit
+            name
+            version
+            src
+            buildInputs
+            ;
+
+          prePatch = ''
+            sed -i "s@/usr/local@$out@" config.mk
+          '';
+
+          makeFlags = [ "CC=${env.cc.targetPrefix}cc" ];
+        };
+
+        devShells.default = pkgs.mkShell.override { stdenv = env; } {
+          packages =
+            with pkgs;
+            [
+              clang-tools
+              gnumake
+            ]
+            ++ buildInputs;
+        };
+      }
+    );
 }
