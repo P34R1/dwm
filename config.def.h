@@ -88,10 +88,18 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_purple, "-sf", col_white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+
+static const char *vol_up[]   = { "volume", "up",   NULL };
+static const char *vol_down[] = { "volume", "down", NULL };
+static const char *vol_mute[] = { "volume", "mute", NULL };
+
+static const char *light_up[]   = { "light", "-A", "5", NULL };
+static const char *light_down[] = { "light", "-U", "5", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, // Open dmenu (super+p)
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } }, // Open alacritty (super+enter)
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -113,6 +121,17 @@ static const Key keys[] = {
 	/*{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },*/
 	/*{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },*/
 	/*{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },*/
+
+  // Screen Brightness
+  { 0,			    XF86XK_MonBrightnessUp,		        spawn,	   {.v = light_up} },
+	{ 0,				XF86XK_MonBrightnessDown,	          spawn,   	 {.v = light_down} },
+
+  // Volume
+  { 0,			   XF86XK_AudioRaiseVolume,		        spawn,	   {.v = vol_up} },
+	{ 0,				 XF86XK_AudioLowerVolume,	          spawn,   	 {.v = vol_down} },
+	{ 0,				        XF86XK_AudioMute,	          spawn,   	 {.v = vol_mute} },
+
+  // Tags
 	TAGKEYS(                        XK_1,                      0),
 	TAGKEYS(                        XK_2,                      1),
 	TAGKEYS(                        XK_3,                      2),
@@ -122,6 +141,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6),
 	TAGKEYS(                        XK_8,                      7),
 	TAGKEYS(                        XK_9,                      8),
+
+  // Quit dwm (to tty)
 	{ MODKEY|ShiftMask,             XK_m,      quit,           {0} },
 };
 
