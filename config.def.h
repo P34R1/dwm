@@ -57,9 +57,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class        instance     title    "1 << tag-1"     isfloating   monitor */
-  { "librewolf",  NULL,        NULL,     1 << 2 - 1,     0,           -1 },
-  { "vesktop",    NULL,        NULL,     1 << 4 - 1,     0,           -1 },
-  { "discord",    NULL,        NULL,     1 << 4 - 1,     0,           -1 },
+  { "librewolf",  NULL,        NULL,     1 << (2 - 1),     0,           -1 },
+  { "vesktop",    NULL,        NULL,     1 << (4 - 1),     0,           -1 },
+  { "discord",    NULL,        NULL,     1 << (4 - 1),     0,           -1 },
 };
 
 /* layout(s) */
@@ -96,6 +96,8 @@ static const char *vol_mute[] = { "volume", "mute", NULL };
 static const char *light_up[]   = { "light", "-A", "5", NULL };
 static const char *light_down[] = { "light", "-U", "5", NULL };
 
+
+#include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, // Open dmenu (super+p)
