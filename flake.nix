@@ -18,10 +18,10 @@
         pkgs = nixpkgs.legacyPackages.${system};
         env = pkgs.clangStdenv;
 
-        buildInputs = with pkgs.xorg; [
-          libX11
-          libXft
-          libXinerama
+        buildInputs = with pkgs; [
+          libx11
+          libxft
+          libxinerama
         ];
 
         src = ./.;
