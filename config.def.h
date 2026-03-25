@@ -95,8 +95,8 @@ static const char *vol_up[]   = { "volume", "up",   NULL };
 static const char *vol_down[] = { "volume", "down", NULL };
 static const char *vol_mute[] = { "volume", "mute", NULL };
 
-static const char *light_up[]   = { "light", "-A", "5", NULL };
-static const char *light_down[] = { "light", "-U", "5", NULL };
+static const char *light_up[]   = { "xbacklight", "-inc", "5", NULL };
+static const char *light_down[] = { "xbacklight", "-dec", "5", NULL };
 
 
 #include <X11/XF86keysym.h>
