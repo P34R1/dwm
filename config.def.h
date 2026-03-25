@@ -36,7 +36,8 @@ static const unsigned int alphas[][3]      = {
 
 static const char *const autostart[] = {
 	"alacritty", NULL,
-	"librewolf", NULL,
+	"zen", NULL,
+	// "librewolf", NULL,
 	// "flatpak", "run", "dev.vencord.Vesktop", NULL,
   "discord", NULL,
 
@@ -57,6 +58,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class        instance     title    "1 << tag-1"     isfloating   monitor */
+  { "zen",  NULL,        NULL,     1 << (2 - 1),     0,           -1 },
   { "librewolf",  NULL,        NULL,     1 << (2 - 1),     0,           -1 },
   { "vesktop",    NULL,        NULL,     1 << (4 - 1),     0,           -1 },
   { "discord",    NULL,        NULL,     1 << (4 - 1),     0,           -1 },
